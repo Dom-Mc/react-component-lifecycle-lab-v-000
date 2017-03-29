@@ -16,14 +16,40 @@ class App extends React.Component {
     this.fetchTweets = this.fetchTweets.bind(this);
   }
 
-  // TODO: componentWillMount() 
 
-  // TODO: componentDidMount() 
+  // NOTE: MOUNT
+  componentWillMount() {
+    this.fetchTweets();
+    console.log('componentWillMount() called inside <App />')
+  }
 
-  // TODO: componentWillUnmount()
+  componentDidMount() {
+    this.startInterval();
+    console.log('componentDidMount() called inside <App />');
+  }
 
-  // TODO: componentDidUpdate()
-  
+
+  // NOTE: UPDATE
+  // shouldComponentUpdate() {
+  //   console.log('shouldComponentUpdate() called inside <App />');
+  // }
+
+  componentWillUpdate() {
+    console.log('componentWillUpdate() called inside <App />');
+  }
+
+  componentDidUpdate() {
+    this.updateChart(this.state.latestTweets.length);
+    console.log('componentDidUpdate() called inside <App />');
+  }
+
+
+  // NOTE: UNMOUNT
+  componentWillUnmount() {
+    this.cleanUpInterval();
+    console.log('componentWillUnmount() called inside <App />');
+  }
+
   updateChart(numTweets) {
     update(numTweets);
   }
